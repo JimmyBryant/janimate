@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		div{
+			display: inline-block;
+			width: 100px;
+			height: 50px;
+			margin-right: 20px;
+			background-color: #ccc;
+		}
+	</style>
+	<script type="text/javascript" src="dist/janimate.js"></script>
+	<script type="text/javascript" src="jsmorph.js"></script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<script type="text/javascript">
+		var demo1=document.getElementById('div1'),
+			demo2=document.getElementById('div2');
+		var m1=new jsMorph(demo1,{'height':'300px',width:'300px',opacity:0.1});
+		var m2=new janimate(demo2,{'height':'300px',width:'300px',opacity:0.1});
+		demo1.onclick=function  (argument) {
+			m1.start();
+		}
+		demo2.onclick=function(){
+			m2.start();
+		}
+	</script>
+</body>
+</html>

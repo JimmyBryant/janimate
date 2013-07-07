@@ -37,10 +37,10 @@ module.exports = function(grunt) {
 		  },
 		  concat:{
 		  	options: {
-		  		banner: '/*!<%= pkg.name%> v<%= pkg.version%> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+		  		//banner: '/*!<%= pkg.name%> v<%= pkg.version%> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
 		    },
 		    dist: {
-		      src: ['src/intro.js','src/outro.js'],
+		      src: ['src/intro.js','src/css.js','src/core.js','src/main.js','src/easing.js','src/outro.js'],
 		      dest: 'dist/janimate.js'
 		    }
 		  }
