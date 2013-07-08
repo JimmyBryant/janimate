@@ -1,7 +1,7 @@
 /*!
 *	janimate.js
 */
-var janimate = function(obj,prop,duration,ease,delay,callback) {
+var janimate = function(obj,prop,param,callback) {	//param{duration:,ease:,delay:}
 
 	var animQuery=[],
 		timerID=null;

@@ -2,6 +2,22 @@
 <head>
 	<title></title>
 	<style type="text/css">
+		section{
+			display: block;
+			margin: 24px 0;
+			padding: 50px;
+		}
+		pre{
+			background-color: #f1f1f1;
+			border-radius: 5px;
+			border:1px solid #DDD;
+			color: #666;
+		}
+		.anim{
+			width: 50px;
+			height: 50px;
+			background-color: red;
+		}
 		div{
 			display: inline-block;
 			width: 100px;
@@ -14,19 +30,23 @@
 	<script type="text/javascript" src="jsmorph.js"></script>
 </head>
 <body>
-	<div id="div1"></div>
-	<div id="div2"></div>
-	<script type="text/javascript">
-		var demo1=document.getElementById('div1'),
-			demo2=document.getElementById('div2');
-		var m1=new jsMorph(demo1,{'height':'300px',width:'300px',opacity:0.1});
-		var m2=new janimate(demo2,{'height':'300px',width:'300px',opacity:0.1});
-		demo1.onclick=function  (argument) {
-			m1.start();
-		}
-		demo2.onclick=function(){
-			m2.start();
-		}
-	</script>
+	<section>
+		<div id="demo1" class="anim"></div>
+		<pre>
+			<code>
+	var demo1=document.getElementById('demo1');
+	demo1.onclick=function(){
+		new janimate(demo1,{width:(500*Math.random()+"px"),opacity:Math.random().toFixed(1)},{ease:"easeInCubic"}).start();
+	}
+			</code>
+		</pre>
+		<script type="text/javascript">
+			var demo1=document.getElementById('demo1');
+			demo1.onclick=function(){
+				new janimate(demo1,{width:(500*Math.random()+"px"),opacity:Math.random().toFixed(1)},{ease:"easeInCubic"}).start();
+			}
+		</script>
+	</section>
+
 </body>
 </html>

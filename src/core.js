@@ -7,8 +7,7 @@
 				prop=item.prop;
 			item.initProp={};
 			for(var p in prop){
-				var prop_name=getPropName(p),
-					curStyle=new css(item.obj).get(prop_name);
+				curStyle=new css(item.obj).get(p);
 				gap[p]=parseFloat(prop[p])-parseFloat(curStyle);
 				item.initProp[p]=parseFloat(curStyle);
 			}
@@ -45,6 +44,7 @@
 						tmpCSS+=';'+p+':'+item.prop[p];
 					}
 					item.obj.style.cssText+=tmpCSS;
+					item.callback&&item.callback(item.obj);
 					timerID=null;
 				}
 			}else{
