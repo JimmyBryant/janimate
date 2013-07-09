@@ -1,11 +1,37 @@
 <html>
 <head>
-	<title></title>
+	<title>janimate demo</title>
+	<meta charset="utf-8">
 	<style type="text/css">
+		body{
+			font-size: 1em/1.5 "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+
+		}
+		h2,h3{
+			margin: 0;
+		}
+		.func{
+			color: #666;
+		}
+		.func dt{
+			background: #000;
+			color: #FFF;
+			padding:15px 20px;
+			border-radius: 5px 5px 0 0;
+			font-family:klavika-web;
+		}
+		.func dd{
+			padding: 10px;
+			margin: 0;
+			background: #EEE;
+			text-shadow:0 1px 0 #FFF;
+		}
+		/**/
 		section{
 			display: block;
 			margin: 24px 0;
-			padding: 50px;
+			padding:10px 50px;
+			border-bottom: 1px solid #999;
 		}
 		pre{
 			background-color: #f1f1f1;
@@ -14,39 +40,99 @@
 			color: #666;
 		}
 		.anim{
+			position: relative;
 			width: 50px;
 			height: 50px;
 			background-color: red;
-		}
-		div{
-			display: inline-block;
-			width: 100px;
-			height: 50px;
-			margin-right: 20px;
-			background-color: #ccc;
 		}
 	</style>
 	<script type="text/javascript" src="dist/janimate.js"></script>
 	<script type="text/javascript" src="jsmorph.js"></script>
 </head>
 <body>
+	<h1>janimate</h1>
+	<dl class="func">
+		<dt><h3>janimate(objs,props[,param][,callback])</h3></dt>
+		<dd><strong>objs</strong> type:Object/Array/ 只要是dom对象或者elementCollection of elements</dd>
+		<dd><strong>props</strong> type:Object 例如{width:'100px',height:'100px'}</dd>
+		<dd><strong>param</strong> type:Object 可选，用于设置animate的一些属性。例如{delay:1000,easing:'easeInQuad',duration:800}//设置动画延迟1s再执行，动画效果easeInQuad,动画时间800ms
+		</dd>
+		<dd><strong>callback</strong> type:Function 可选，动画执行完的回调函数</dd>
+	</dl>
 	<section>
+		<h3>最简单的用法</h3>
 		<div id="demo1" class="anim"></div>
 		<pre>
 			<code>
 	var demo1=document.getElementById('demo1');
 	demo1.onclick=function(){
-		new janimate(demo1,{width:(500*Math.random()+"px"),opacity:Math.random().toFixed(1)},{ease:"easeInCubic"}).start();
+		new janimate(demo1,{left:Math.random().toFixed(1)*1000+'px'}).start();
 	}
 			</code>
 		</pre>
 		<script type="text/javascript">
 			var demo1=document.getElementById('demo1');
 			demo1.onclick=function(){
-				new janimate(demo1,{width:(500*Math.random()+"px"),opacity:Math.random().toFixed(1)},{ease:"easeInCubic"}).start();
+				new janimate(demo1,{left:Math.random().toFixed(1)*1000+'px'}).start();
+				// new jsMorph(demo1,{left:Math.random().toFixed(1)*1000+'px'}).start();
 			}
 		</script>
 	</section>
-
+	<section>
+		<h3>使用动画效果ease</h3>
+		<div id="demo2" class="anim"></div>
+		<pre>
+			<code>
+	var demo2=document.getElementById('demo2');
+	demo2.onclick=function(){
+		new janimate(demo2,{left:Math.random().toFixed(1)*1000+'px'},{ease:"easeInCubic"}).start();
+	}
+			</code>
+		</pre>
+		<script type="text/javascript">
+			var demo2=document.getElementById('demo2');
+			demo2.onclick=function(){
+				new janimate(demo2,{left:Math.random().toFixed(1)*1000+'px'},{ease:"easeInCubic"}).start();
+			}
+		</script>
+	</section>
+	<section>
+		<h3>设置动画延迟时间delay</h3>
+		<div id="demo3" class="anim"></div>
+		<pre>
+			<code>
+	var demo3=document.getElementById('demo3');
+	demo3.onclick=function(){
+		new janimate(demo3,{width:(50+Math.random().toFixed(1)*1000)+'px'},{ease:"easeInQuad",delay:500}).start();
+	}
+			</code>
+		</pre>
+		<script type="text/javascript">
+			var demo3=document.getElementById('demo3');
+			demo3.onclick=function(){
+				new janimate(demo3,{width:(50+Math.random().toFixed(1)*1000)+'px'},{ease:"easeInQuad",delay:500}).start();
+			}
+		</script>
+	</section>
+	<section>
+		<h3>设置动画执行时间duration</h3>
+		<div id="demo4" class="anim"></div>
+		<pre>
+			<code>
+	var demo4=document.getElementById('demo4');
+	var anim4=new janimate(demo4,{width:'500px',opacity:0.1},{duration:1000});
+	demo4.onclick=function(){
+		anim4.start();
+	}
+			</code>
+		</pre>
+		<script type="text/javascript">
+			var demo4=document.getElementById('demo4');
+			var anim4=new janimate(demo4,{width:'500px',opacity:0.1},{duration:1000});
+			demo4.onclick=function(){
+				anim4.start();
+			}
+		</script>
+	</section>
 </body>
 </html>

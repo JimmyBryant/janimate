@@ -1,5 +1,8 @@
+(function(window,elem){
+
 	var css=function(elem){
 
+		var _=this;
 		this.get=function(name){	//获取单个dom元素css属性值
 
 			var core_pnum = /[\-+]?(?:\d*\.|)\d+(?:[eE][\-+]?\d+|)/.source,//用于匹配数字
@@ -15,10 +18,11 @@
 			var getWidthOrHeight=function(elem,name){	//用于获取elem的width和height
 
 				var ret=name==="width"?elem.clientWidth:elem.clientHeight
-					,pt=parseFloat(css.get(elem,'paddingTop'))
-					,pb=parseFloat(css.get(elem,'paddingBottom'))
-					,pl=parseFloat(css.get(elem,'paddingLeft'))
-					,pr=parseFloat(css.get(elem,'paddingRight'));
+					,pt=parseFloat(new css(elem).get('paddingTop'))
+					,pb=parseFloat(new css(elem).get('paddingBottom'))
+					,pl=parseFloat(new css(elem).get('paddingLeft'))
+					,pr=parseFloat(new css(elem).get('paddingRight'));
+
 				ret=(name==="width"?ret-pl-pr:ret-pt-pb)+'px';
 				return ret;
 
@@ -70,7 +74,7 @@
 				}else if(name==="width"||name==="height"){
 
 					if(elem.currentStyle[name]==="auto"){    //如果未设置width,height默认返回auto
-						ret==getWidthOrHeight(elem,name);
+						ret=getWidthOrHeight(elem,name);
 						return ret;
 					}
 
@@ -115,31 +119,10 @@
 				return elem.style[name];
 			}
 		};
-		this.set=function(name,value){	//设置css属性
-			// 一次设置多个css属性
-			if(name&&typeof name=="object"&&value===undefined){
-				var tmpStyle='';
-				for(var pro in name){
-					if(!window.getComputedStyle&&pro=='opacity'){
-						tmpStyle+="filter:alpha(opacity="+100*name[pro]+");";
-					}else{
-						tmpStyle+=pro+':'+name[pro]+";";
-					}
-				}
-				elem.style.cssText+=";"+tmpStyle;
-				return;
-			}
-			//设置单个css 属性
-			name=name.replace(/-([\w])/,function(){return arguments[1].toUpperCase();});
-			if(window.getComputedStyle){
-				name=name==="float"?"cssFloat":name;
-			}else{
-				name=name==="float"?"styleFloat":name;
-				if(name==="opacity"){
-					elem.style.filter="alpha(opacity="+100*value+")";
-				}
-			}
-			elem.style[name]=value;
-		};
 		return this;
 	};
+	window.css=function(elem){	//省去调用过程使用new
+		return new css(elem);
+	};
+})(window);
+

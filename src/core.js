@@ -7,7 +7,8 @@
 				prop=item.prop;
 			item.initProp={};
 			for(var p in prop){
-				curStyle=new css(item.obj).get(p);
+				curStyle=css(item.obj).get(p);
+				curStyle=curStyle==='auto'?0:curStyle;
 				gap[p]=parseFloat(prop[p])-parseFloat(curStyle);
 				item.initProp[p]=parseFloat(curStyle);
 			}
