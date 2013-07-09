@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Janimate : it's a js animate framework" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Janimate</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/JimmyBryant/janimate">View on GitHub</a>
+
+          <h1 id="project_title">Janimate</h1>
+          <h2 id="project_tagline">it's a js animate framework</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/JimmyBryant/janimate/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/JimmyBryant/janimate/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="janimate" class="anchor" href="#janimate"><span class="octicon octicon-link"></span></a>janimate</h1>
+
+<p>一个纯js轻量级动画库</p>
+
+<h2>
+<a name="" class="anchor" href="#"><span class="octicon octicon-link"></span></a>说明</h2>
+
+<p>写janimate是因为我看到jsMorph——1个优秀的animate frmawork，觉得它里面的一些想法和jquery的动画不太一样，所以想学习借鉴下。
+jquery所有动画都存在一个队列里，只用一个计时器控制动画，这个应该是比较适合页面动画比较多的情况。
+而janimte每一个动画对应一个实例对象，操作比较简单</p>
+
+<h2>
+<a name="-1" class="anchor" href="#-1"><span class="octicon octicon-link"></span></a>如何使用</h2>
+
+<pre><code>var obj=document.getElementsByTagName('div');
+var anim=new janimate(obj,{width:'500px',height:'500px'});
+anim.start();
+</code></pre>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Janimate maintained by <a href="https://github.com/JimmyBryant">JimmyBryant</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("34854743");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
